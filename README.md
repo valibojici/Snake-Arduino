@@ -139,7 +139,16 @@ This a brief tutorial on the rules and mechanics of the game such as:
 - After level 4 a timer is used for food, so you have to be quick.
 - You can pass through walls (and appear on the other side of the matrix), but be careful to not hit the snake’s tail.
 
+</details>
+
+<details>
+<summary>
+
 ## 🕹️Gameplay
+
+</summary>
+
+![20221215_152317_1_1](https://user-images.githubusercontent.com/68808448/207926063-d4c55ae7-91ea-49b7-934a-96071735e619.gif)
 
 ![20221213_194915](https://user-images.githubusercontent.com/68808448/207910970-13ea8367-53cf-4476-8d60-448315d7a2c9.jpg)
 
