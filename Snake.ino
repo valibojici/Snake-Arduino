@@ -1,31 +1,31 @@
 void handleSnakeInput() {
   if (joyState == JoyMovements::JOY_UP) {
-    if (rowDir == 0) {
-      rowDir = -1;
-      colDir = 0;
+    if (rowDir != 1) {
+      nextRowDir = -1;
+      nextColDir = 0;
     }
   } else if (joyState == JoyMovements::JOY_DOWN) {
-    if (rowDir == 0) {
-      rowDir = 1;
-      colDir = 0;
+    if (rowDir != -1) {
+      nextRowDir = 1;
+      nextColDir = 0;
     }
   } else if (joyState == JoyMovements::JOY_RIGHT) {
-    if (colDir == 0) {
-      colDir = 1;
-      rowDir = 0;
+    if (colDir != -1) {
+      nextColDir = 1;
+      nextRowDir = 0;
     }
   } else if (joyState == JoyMovements::JOY_LEFT) {
-    if (colDir == 0) {
-      colDir = -1;
-      rowDir = 0;
+    if (colDir != 1) {
+      nextColDir = -1;
+      nextRowDir = 0;
     }
   }
 }
 
 bool checkInHistory(byte row, byte col) {
-  byte temp = (row << 4) | col;
+  byte position = (row << 4) | col;
   for (int i = 0; i < snakeHistoryLength; ++i) {
-    if (snakeHistory[i] == temp) {
+    if (snakeHistory[i] == position) {
       return true;
     }
   }

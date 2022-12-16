@@ -27,6 +27,8 @@ byte colFood;
 
 int rowDir;
 int colDir;
+int nextRowDir;
+int nextColDir;
 
 bool foodExists;
 bool matrixChanged;
@@ -138,6 +140,8 @@ void processFoodCollect() {
 }
 
 void updateSnakePosition() {
+  rowDir = nextRowDir;
+  colDir = nextColDir;
   historyPush(rowSnake, colSnake);
   if (rowSnake == 0 && rowDir == -1) {
     rowSnake = MATRIX_SIZE - 1;
@@ -174,6 +178,7 @@ void updateSnakePosition() {
 }
 
 void initGame() {
+  srandom(millis());
   difficulty = constrain(gameSettings.difficulty, 0, MAX_DIFFICULTY - 1);
   gameDelay = map(difficulty, 0, MAX_DIFFICULTY - 1, MAX_GAME_DELAY, MIN_GAME_DELAY);
   snakeHistoryLength = 0;
@@ -183,8 +188,8 @@ void initGame() {
   colSnake = difficulty / 2;
   rowSnake = 0;
   gameMatrix[rowSnake][colSnake] = 1;
-  rowDir = 0;
-  colDir = 1;
+  nextRowDir = rowDir = 0;
+  nextColDir = colDir = 1;
   gameScore = 0;
   gameInfoUpdated = true;
   foodExists = false;
