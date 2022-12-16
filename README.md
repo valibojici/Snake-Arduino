@@ -125,7 +125,7 @@ The settings menu has the following options:
 
 ### ℹ️About!
 
-[20221213_194854](https://user-images.githubusercontent.com/68808448/207910782-ad374cff-d3e3-4f8a-8ea0-f620f476917a.jpg)
+![20221213_194854](https://user-images.githubusercontent.com/68808448/207910782-ad374cff-d3e3-4f8a-8ea0-f620f476917a.jpg)
 
 The about section displays the name of the game, my name, and the link to the project on GitHub. This information is useful for players who want to learn more about the game for anyone who wants to contribute to the project and help improve the game.
 
