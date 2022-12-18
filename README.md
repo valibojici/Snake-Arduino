@@ -12,7 +12,7 @@ This project is the classic snake game, a fun and challenging game implemented o
 
 ## 🎦Short demo
 
-[Youtube link](https://youtu.be/Ltl1Z3MX-3o)
+[Youtube link](https://youtu.be/Tr-S0kC32G0)
 
 <details>
 <summary>
