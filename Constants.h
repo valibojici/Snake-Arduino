@@ -42,9 +42,9 @@ const int FOOD_BUZZER_FREQUENCY = 360;
 const int MAX_GAME_DELAY = 500;
 const int MIN_GAME_DELAY = 150;
 const int FOOD_BLINK_DELAY = 500;
-const int MAX_FOOD_DELAY = 6000;
+const int MAX_FOOD_DELAY = 5000;
 const int MIN_FOOD_DELAY = 2000;
-const int SNAKE_DELAY = 20;
+const int SNAKE_DELAY = 27;
 
 const int MIN_X_THRESHOLD = 200;
 const int MAX_X_THRESHOLD = 800;
