@@ -106,6 +106,8 @@ The menu has the following options:
 
 ![20221213_194802](https://user-images.githubusercontent.com/68808448/207910567-1f5ffea9-1378-4d8e-871d-e8a801b7906e.jpg)
 
+Highscores are saved in the EEPROM.
+
 This menu is a leaderboard that tracks the top 5 scores of all time. The highscores menu shows the name of the player and their score, ranked from the first to the fifth place. When there are no highscores, “No highscores” message will be displayed instead.
 
 The names are limited to 5 letters, so you should try to come up with a creative name.
@@ -114,9 +116,11 @@ The names are limited to 5 letters, so you should try to come up with a creative
 
 ![20221213_194845](https://user-images.githubusercontent.com/68808448/207910638-962bfd1b-b3f9-4def-9186-114f0da43ba9.jpg)
 
+All settings are saved in the EEPROM.
+
 The settings menu has the following options:
 
-- Difficulty: choose from 6 levels of difficulty, ranging from easy to hard. The higher the difficulty, the faster the snake moves and the more challenging the game becomes but also the score increases more. Starting with level 4 the food will have a timer so you will have to be quick to guide the snake to it.
+- Difficulty: choose from 6 levels of difficulty, ranging from easy to hard. The higher the difficulty, the faster the snake moves and the more challenging the game becomes but also the score increases more. In the first 2 levels, the snake moves faster and gets bigger with every piece of food eaten, in the next 2 levels the snake's speed and length stay the same but a timer for food is introduced. In the last 2 levels both game mechanics are combined.
 - LCD Contrast: adjust the contrast of the LCD display to change the visibility of the text.
 - LCD Brightness: control the brightness of the backlight of the LCD display, allowing you to play in different lighting conditions.
 - Matrix Brightness: control the brightness of the LED matrix, allowing you to adjust the intensity of the 8x8 LED matrix.
@@ -136,7 +140,7 @@ The about section displays the name of the game, my name, and the link to the pr
 This a brief tutorial on the rules and mechanics of the game such as:
 
 - The snake can move up, down, left, right using the joystick.
-- After level 4 a timer is used for food, so you have to be quick.
+- After level 3 a timer is used for food, so you have to be quick.
 - You can pass through walls (and appear on the other side of the matrix), but be careful to not hit the snake’s tail.
 
 </details>
@@ -154,7 +158,7 @@ This a brief tutorial on the rules and mechanics of the game such as:
 
 The gameplay is simple and intuitive, you use the joystick to control the snake and navigate through the LED matrix. The current difficulty level, score and food timer are displayed on the LCD.
 
-There are no obstacles, so you can focus on collecting food and scoring points. However, the game becomes more challenging as you advance to higher levels, where the snake moves faster and the availability of food is limited by a timer.
+There are no obstacles, so you can focus on collecting food and scoring points. However, the game becomes more challenging as you advance to higher levels, where the snake moves faster and the availability of food is limited by a timer. 
 
 One extra feature is that the snake can move through the walls of the game board, allowing the snake to wrap around to the other side. This adds an extra layer of strategy to the game, so you must plan your moves carefully to avoid hitting the snake’s tail when you exit on the other side.
 
