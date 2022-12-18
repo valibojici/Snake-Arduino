@@ -17,6 +17,7 @@ unsigned long pauseTime;
 byte snakeHistory[64];
 byte snakeHistoryLength;
 int gameDelay;
+int foodCollected;
 bool gameStarted = false;
 byte difficulty;
 byte lastPrintedTimeLeftSecond = 0;
@@ -52,7 +53,7 @@ void runGame() {
     return;
   }
 
-  if (difficulty >= MAX_DIFFICULTY / 2) {
+  if (difficulty >= D2_LEVEL) {
     deleteFood();
   }
 
@@ -74,7 +75,7 @@ void runGame() {
 }
 
 void foodBlink() {
-  if (difficulty < MAX_DIFFICULTY / 2) {
+  if (difficulty < D2_LEVEL) {
     if (millis() - foodBlinkTimer > FOOD_BLINK_DELAY) {
       gameMatrix[rowFood][colFood] = 1 - gameMatrix[rowFood][colFood];
       foodBlinkTimer = millis();
@@ -83,7 +84,7 @@ void foodBlink() {
     return;
   }
 
-  const int currentFoodDelay = map(difficulty, MAX_DIFFICULTY / 2, MAX_DIFFICULTY, MAX_FOOD_DELAY, MIN_FOOD_DELAY);
+  const int currentFoodDelay = getCurrentFoodDelay();
   const int elapsedTime = millis() - foodTimer;
   const int blinkDelay = elapsedTime <= currentFoodDelay / 2 ? FOOD_BLINK_DELAY : FOOD_BLINK_DELAY / 5;
 
@@ -103,7 +104,7 @@ void snakeBlink() {
 }
 
 void deleteFood() {
-  const int currentFoodDelay = map(difficulty, MAX_DIFFICULTY / 2, MAX_DIFFICULTY, MAX_FOOD_DELAY, MIN_FOOD_DELAY);
+  const int currentFoodDelay = getCurrentFoodDelay();
   const int elapsedTime = millis() - foodTimer;
   if (elapsedTime > currentFoodDelay) {
     foodExists = false;
@@ -119,7 +120,7 @@ void generateFood() {
   gameMatrix[rowFood][colFood] = 0;
   rowFood = random(0, MATRIX_SIZE - 1);
   colFood = random(0, MATRIX_SIZE - 1);
-  while (checkInHistory(rowFood, colFood)) {
+  while (checkInHistory(rowFood, colFood) || (rowFood == rowSnake && colFood == colSnake)) {
     rowFood = random(0, MATRIX_SIZE - 1);
     colFood = random(0, MATRIX_SIZE - 1);
   }
@@ -128,15 +129,25 @@ void generateFood() {
 }
 
 void processFoodCollect() {
+  if(difficulty >= D2_LEVEL && difficulty < D3_LEVEL){
+    historyPop(); // D2 - only timer, length stays the same
+  }
+  foodCollected++;
   foodExists = false;
   gameScore += (difficulty + 1) * 10 + snakeHistoryLength * 5;
   gameInfoUpdated = true;
-  if (snakeHistoryLength % 3 == 0) {
-    // increase difficulty
+  increaseDifficulty();
+}
+
+void increaseDifficulty(){
+  if (foodCollected % 4 == 0) {
     difficulty = min(difficulty + 1, MAX_DIFFICULTY - 1);
-    gameDelay = map(difficulty, 0, MAX_DIFFICULTY - 1, MAX_GAME_DELAY, MIN_GAME_DELAY);
+    if(difficulty < D2_LEVEL || difficulty >= D3_LEVEL){
+      gameDelay = map(difficulty, 0, MAX_DIFFICULTY - 1, MAX_GAME_DELAY, MIN_GAME_DELAY);
+    }
     gameInfoUpdated = true;
   }
+
 }
 
 void updateSnakePosition() {
@@ -182,10 +193,10 @@ void initGame() {
   difficulty = constrain(gameSettings.difficulty, 0, MAX_DIFFICULTY - 1);
   gameDelay = map(difficulty, 0, MAX_DIFFICULTY - 1, MAX_GAME_DELAY, MIN_GAME_DELAY);
   snakeHistoryLength = 0;
-  for (int i = 0; i < difficulty / 2; ++i) {
+  for (int i = 0; i <= difficulty; ++i) {
     historyPush(0, i);
   }
-  colSnake = difficulty / 2;
+  colSnake = difficulty + 1;
   rowSnake = 0;
   gameMatrix[rowSnake][colSnake] = 1;
   nextRowDir = rowDir = 0;
@@ -197,7 +208,8 @@ void initGame() {
   gameStartTime = millis();
   gameStarted = true;
   gamePaused = false;
-  gamePaused = false;
+  foodCollected = 0;
+  gameTimer = millis();
   lcd.clear();
 }
 
@@ -209,16 +221,20 @@ void printGameInfo() {
     if (gamePaused) {
       top = "Paused!";
       bottom = "Press to unpause";
-    } else if (difficulty < MAX_DIFFICULTY / 2) {
+    } else if (difficulty < D2_LEVEL) {
       bottom = "Difficulty: " + String(difficulty + 1);
     } else {
-      const int currentDelay = map(difficulty, MAX_DIFFICULTY / 2, MAX_DIFFICULTY, MAX_FOOD_DELAY, MIN_FOOD_DELAY);
+      const int currentDelay = getCurrentFoodDelay();
       const int elapsedTime = millis() - foodTimer;
       const unsigned long timeLeft = (elapsedTime <= currentDelay ? (currentDelay - elapsedTime) : 0);
       bottom = "Diff: " + String(difficulty + 1) + " Time: " + String(timeLeft / 1000);
     }
     printLcdLines(top.c_str(), bottom.c_str(), OPTION_NONE);
   }
+}
+
+unsigned long getCurrentFoodDelay(){
+  return map(difficulty, D2_LEVEL, MAX_DIFFICULTY, MAX_FOOD_DELAY, MIN_FOOD_DELAY);
 }
 
 void pauseGame() {

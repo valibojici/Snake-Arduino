@@ -22,6 +22,9 @@ const byte MIN_LCD_CONTRAST_OUTPUT = 40;
 const byte MAX_LCD_BRIGHTNESS_OUTPUT = 255;
 const byte MIN_LCD_BRIGHTNESS_OUTPUT = 50;
 
+const byte D1_LEVEL = 0;
+const byte D2_LEVEL = 2;
+const byte D3_LEVEL = 4;
 const byte MAX_DIFFICULTY = 6;
 const byte MAX_LCD_CONTRAST = 8;
 const byte MAX_LCD_BRIGHTNESS = 8;
@@ -36,12 +39,12 @@ const int SNAKE_BUZZER_FREQUENCY = 180;
 const int SNAKE_BUZZER_DURATION = 27;
 const int FOOD_BUZZER_FREQUENCY = 360;
 
-const int MAX_GAME_DELAY = 400;
-const int MIN_GAME_DELAY = 110;
+const int MAX_GAME_DELAY = 500;
+const int MIN_GAME_DELAY = 150;
 const int FOOD_BLINK_DELAY = 500;
 const int MAX_FOOD_DELAY = 6000;
 const int MIN_FOOD_DELAY = 2000;
-const int SNAKE_DELAY = 27;
+const int SNAKE_DELAY = 20;
 
 const int MIN_X_THRESHOLD = 200;
 const int MAX_X_THRESHOLD = 800;
