@@ -106,6 +106,8 @@ The menu has the following options:
 
 ![20221213_194802](https://user-images.githubusercontent.com/68808448/207910567-1f5ffea9-1378-4d8e-871d-e8a801b7906e.jpg)
 
+Highscores are saved in the EEPROM.
+
 This menu is a leaderboard that tracks the top 5 scores of all time. The highscores menu shows the name of the player and their score, ranked from the first to the fifth place. When there are no highscores, “No highscores” message will be displayed instead.
 
 The names are limited to 5 letters, so you should try to come up with a creative name.
@@ -113,6 +115,8 @@ The names are limited to 5 letters, so you should try to come up with a creative
 ### ⚙️Settings
 
 ![20221213_194845](https://user-images.githubusercontent.com/68808448/207910638-962bfd1b-b3f9-4def-9186-114f0da43ba9.jpg)
+
+All settings are saved in the EEPROM.
 
 The settings menu has the following options:
 
