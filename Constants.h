@@ -154,8 +154,9 @@ const byte ABOUT_MENU_LENGTH = sizeof(aboutMenuText) / sizeof(char*);
 
 const char* howToPlayText[] = {
   "Snake: use joystick to move.",
-  "Food: collect to increase score, has a timer after level 4",
-  "Walls: you can pass through wall, exit on other side"
+  "Food: collect to increase score",
+  "Walls: you can pass through wall, exit on other side",
+  "Levels: 1-2 snake length/speed increase, 3-4 food timer, 5-6 both mechanics"
 };
 const byte HOWTOPLAY_MENU_LENGTH = sizeof(howToPlayText) / sizeof(char*);
 
