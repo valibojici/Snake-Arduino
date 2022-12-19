@@ -164,6 +164,9 @@ One extra feature is that the snake can move through the walls of the game board
 
 You can pause the game by pressing the joystick button. Press again to unpause.
 
+![image](https://user-images.githubusercontent.com/68808448/208480633-10549f8a-7666-4017-b06f-2fa3f7c70351.png)
+
+
 ### 💀Game over
 
 The game is over when the snake touches its tail. The LCD displays a “Game over” message and shortly after the final score and the total time played.
