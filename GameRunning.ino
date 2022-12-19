@@ -192,6 +192,9 @@ void initGame() {
   srandom(millis());
   difficulty = constrain(gameSettings.difficulty, 0, MAX_DIFFICULTY - 1);
   gameDelay = map(difficulty, 0, MAX_DIFFICULTY - 1, MAX_GAME_DELAY, MIN_GAME_DELAY);
+  if(difficulty >= D2_LEVEL && difficulty < D3_LEVEL){
+    gameDelay = map(D2_LEVEL-1, 0, MAX_DIFFICULTY - 1, MAX_GAME_DELAY, MIN_GAME_DELAY);
+  }
   snakeHistoryLength = 0;
   for (int i = 0; i <= difficulty; ++i) {
     historyPush(0, i);
